@@ -1,16 +1,12 @@
 using style_catalog.Data;
 using Microsoft.EntityFrameworkCore;
 
-string root = Directory.GetCurrentDirectory();
-string dotenv = Path.Combine(root, "enviornment.env");
-DotEnv.Load(dotenv);
-
 var builder = WebApplication.CreateBuilder(args);
-var connection = Environment.GetEnvironmentVariable("POSTGRESQL__CONNECTIONSTRING");
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<DataContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString(connection) ?? 
+
+builder.Services.AddDbContext<UserContext>(options =>
+    options.UseNpgsql(builder.Configuration["POSTGRES:ConnectionString"] ?? 
         throw new InvalidOperationException("Connection string not found.")));
 
 var app = builder.Build();
@@ -32,4 +28,3 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-
