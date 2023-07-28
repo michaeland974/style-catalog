@@ -5,7 +5,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 # Enviornment variables
-enviornment.env
+Properties/*
 
 # User-specific files
 *.rsuser
