@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using style_catalog.Models;
+using style_catalog.Data;
 
 #nullable disable
 
 namespace style_catalog.Migrations
 {
-    [DbContext(typeof(DataContext))]
-    [Migration("20230726022743_InitialCreate")]
+    [DbContext(typeof(UserContext))]
+    [Migration("20230728084051_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -46,7 +46,7 @@ namespace style_catalog.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("User");
                 });
 #pragma warning restore 612, 618
         }
