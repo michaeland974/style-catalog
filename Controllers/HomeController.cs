@@ -4,22 +4,24 @@ using style_catalog.Models;
 
 namespace style_catalog.Controllers;
 
+[Route("Home/[action]")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
-    {
+    public HomeController(ILogger<HomeController> logger){
         _logger = logger;
     }
 
-    public IActionResult Index()
-    {
+    [Route("~/Home")] 
+    public IActionResult Home(){
         return View();
     }
 
-    public IActionResult Privacy()
-    {
+    public IActionResult Privacy(){
+        return View();
+    }
+
+    public IActionResult SignIn(){
         return View();
     }
 
