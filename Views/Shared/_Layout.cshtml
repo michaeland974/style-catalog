@@ -3,50 +3,47 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Button Catalog</title>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />    
+    <title>@ViewData["Title"] - Mixin Catalog</title>
+    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />   
+    @RenderSection("css", required: false)
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="top">
-                <li>
-                    <a asp-controller="Home" 
-                       asp-action="Home"
-                       id="logo">Button Catalog</a> 
-                </li>
-                <li>
-                    <a asp-controller="Home" 
-                       asp-action="SignIn"
-                       id="sign-in">Sign in</a> 
-                </li>
-            </ul>
-        </nav>
-    <header/>
+    <nav>
+        <ul class="top">
+            <li>
+                <a asp-controller="Home" 
+                    asp-action="Home"
+                    id="logo">Button Catalog</a> 
+            </li>
+            <li>
+                <a asp-controller="Home" 
+                    asp-action="SignIn"
+                    id="sign-in">Sign in</a> 
+            </li>
+        </ul>
+    </nav>
     <main>        
         @RenderBody()
     </main>
-    <footer>
-        <nav>
-            <ul class="bottom">
-                <li>
-                    <a asp-area="Nav" 
-                       asp-controller="Home" 
-                       asp-action="Home">Home</a>
-                </li>
-                <li>
-                    <a asp-area="Nav" 
-                       asp-controller="Home" 
-                       asp-action="Privacy">Privacy</a>
-                </li>
-                <li>
-                    <a asp-area="Nav" 
-                       asp-controller="User" 
-                       asp-action="Index">User Index</a>
-                </li>
-            </ul>
-        </nav>
-    </footer>
+    <nav>
+        <ul class="bottom">
+            <li>
+                <a asp-area="Nav" 
+                    asp-controller="Home" 
+                    asp-action="Home">Home</a>
+            </li>
+            <li>
+                <a asp-area="Nav" 
+                    asp-controller="Home" 
+                    asp-action="Privacy">Privacy</a>
+            </li>
+            <li>
+                <a asp-area="Nav" 
+                    asp-controller="User" 
+                    asp-action="Index">User Index</a>
+            </li>
+        </ul>
+    </nav>
     
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
