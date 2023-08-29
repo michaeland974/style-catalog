@@ -1,18 +1,25 @@
 using style_catalog.Data;
+using style_catalog.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddSassCompiler();
 
-builder.Services.AddDbContext<UserContext>(options =>
+builder.Services.AddDbContext<DatabaseContext>(options =>
     options.UseNpgsql(builder.Configuration["POSTGRES:ConnectionString"] ?? 
         throw new InvalidOperationException("Connection string not found.")));
 
+builder.Services.AddDefaultIdentity<Account>(options =>
+    options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<DatabaseContext>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline. 
 if (!app.Environment.IsDevelopment()){
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.

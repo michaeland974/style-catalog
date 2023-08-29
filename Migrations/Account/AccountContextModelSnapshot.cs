@@ -10,7 +10,7 @@ using style_catalog.Data;
 
 namespace style_catalog.Migrations.Account
 {
-    [DbContext(typeof(AccountContext))]
+    [DbContext(typeof(DatabaseContext))]
     partial class AccountContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

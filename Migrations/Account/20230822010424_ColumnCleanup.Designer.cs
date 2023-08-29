@@ -11,7 +11,7 @@ using style_catalog.Data;
 
 namespace style_catalog.Migrations.Account
 {
-    [DbContext(typeof(AccountContext))]
+    [DbContext(typeof(DatabaseContext))]
     [Migration("20230822010424_ColumnCleanup")]
     partial class ColumnCleanup
     {

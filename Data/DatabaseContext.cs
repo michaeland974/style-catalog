@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace style_catalog.Data;
 
-public class AccountContext : DbContext{
-    public AccountContext (DbContextOptions<AccountContext> options)
+public class DatabaseContext : DbContext{
+    public DatabaseContext (DbContextOptions<DatabaseContext> options)
         : base(options){}
 
     public DbSet<Account> Account { get; set; } = default!;
