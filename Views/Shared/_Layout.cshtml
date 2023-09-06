@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mixin Catalog</title>
-    <link rel="stylesheet" href="~/css/reset.css" asp-append-version="true" />   
+    <link rel="stylesheet" href="~/css/Global/reset.css" asp-append-version="true" />   
     @RenderSection("css", required: false)
 </head>
 <body>
@@ -15,13 +15,13 @@
                     asp-action="Home"
                     id="logo">Button Catalog</a> 
             </li>
-            <li>
+            @* <li>
                 <a asp-controller="Home" 
                     asp-action="SignIn"
                     id="sign-in">Sign in</a> 
-            </li>
+            </li> *@
+            <partial name="_LoginPartial" />
         </ul>
-        <partial name="_LoginPartial" />
     </nav>
     <main>        
         @RenderBody()
