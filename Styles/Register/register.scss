@@ -1,0 +1,12 @@
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container{
+  @include flex-column;
+
+  border: 1px solid black;
+  gap: 1em;
+}
