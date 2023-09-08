@@ -1,1 +1,1 @@
-.container{display:flex;flex-direction:column;justify-content:center;border:1px solid #000;gap:1em}/*# sourceMappingURL=register.css.map */
+form,.container,.group{display:flex;flex-direction:column;justify-content:center;align-items:center}.container{gap:1em}input:not(input[type=submit]){border:1px solid #000}input[type=submit]{background-color:#d3d3d3}/*# sourceMappingURL=register.css.map */
