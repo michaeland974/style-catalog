@@ -1,0 +1,10 @@
+body{
+  $background-gradient: (45deg, rgba(239,37,180,0.4) 0%, 
+                                rgba(249,249,249,1) 41%, 
+                                rgba(210,240,60,0.4) 100%);
+
+  background: -moz-linear-gradient($background-gradient);
+  background: -webkit-linear-gradient($background-gradient);
+  background: linear-gradient($background-gradient);
+  font-family: 'Courier New', Courier, monospace;
+}
