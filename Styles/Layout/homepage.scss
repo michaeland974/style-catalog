@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Bungee";
+  src: url("../assets/fonts/BungeeShade-Regular.ttf");
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  nav{
+    ul{
+      display: flex;
+      justify-content: space-between;    
+    }
+  }
+
+  main{
+    align-self: center;
+  }
+}
+
+#sign-in-manager{
+  display: flex;
+  flex-direction: column;
+}
+
+#logo{
+  color: var(--primary-dark);
+  font-size: 2.5em;
+  font-family: Bungee;
+  text-decoration: var(--primary-dark) blink underline;
+  background: -webkit-linear-gradient(transparent, #610d4895);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-stroke-width: 1.5px;
+  transition: all 0.5s ease-out 20ms;
+}
+
+#logo:hover{
+  -webkit-text-fill-color: transparent; 
+}
