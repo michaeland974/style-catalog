@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"globals.css"}
+{"version":3,"sourceRoot":"","sources":["../../../Styles/Global/globals.scss"],"names":[],"mappings":"AAAA,WACE,qBACA,sDAGF,KACE,mBACA,wBACA,qBACA,0BAMA,yHACA,4HACA,oHACA","file":"globals.css"}
