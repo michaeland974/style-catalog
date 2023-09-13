@@ -1,0 +1,10 @@
+@function add-opacity($base-color) {
+  @return rgba($base-color, 0.4);
+}
+
+@mixin background-gradient($first, $second, $third: "default"){ 
+  background: linear-gradient(45deg, $first 0%, $second 50%, $third 100%);
+  background: -webkit-linear-gradient(45deg, $first 0%, $second 50%, $third 100%);
+  background: -moz-linear-gradient(45deg, $first 0%, $second 50%, $third 100%);
+}
+
