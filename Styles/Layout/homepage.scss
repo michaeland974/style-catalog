@@ -1,12 +1,25 @@
+@use '../base/global';
+@use '../base/utils';
+
 @font-face {
   font-family: "Bungee";
-  src: url("../assets/fonts/BungeeShade-Regular.ttf");
+  src: url("../../assets/fonts/BungeeShade-Regular.ttf");
 }
 
+$color-list:(
+  'first': utils.add-opacity(global.$primary),
+  'second': white,
+  'third': utils.add-opacity(global.$secondary)
+);
+
 body{
+  @include utils.background-gradient($color-list...);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: 'Courier New', Courier, monospace;
+  
   nav{
     ul{
       display: flex;
@@ -25,11 +38,11 @@ body{
 }
 
 #logo{
-  color: var(--primary-dark);
+  color: global.$primary-dark;
   font-size: 2.5em;
   font-family: Bungee;
-  text-decoration: var(--primary-dark) blink underline;
-  background: -webkit-linear-gradient(transparent, #610d4895);
+  text-decoration: global.$primary-dark blink underline;
+  background: -webkit-linear-gradient(transparent, transparent, global.$primary-dark);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-stroke-width: 1.5px;

@@ -12,7 +12,7 @@
       <div asp-validation-summary="All" class="text-danger"></div>
       <div class="group">
           <label asp-for="firstName" class="control-label">
-            @Html.DisplayName("First Name:")
+            @Html.Label("First Name:")
           </label>
           <input asp-for="firstName" class="form-control" />
           <span asp-validation-for="firstName" class="text-danger"></span>
@@ -39,9 +39,7 @@
           <input asp-for="confirmPassword" class="form-control" />
           <span asp-validation-for="confirmPassword" class="text-danger"></span>
       </div>
-      <div class="group">
-          <input type="submit" value="Create" class="btn btn-primary" />
-      </div>
+      <input type="submit" value="Create"/>
   </form>
 </div>
 
