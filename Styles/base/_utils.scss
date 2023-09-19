@@ -8,3 +8,10 @@
   background: -moz-linear-gradient(45deg, $first 0%, $second 50%, $third 100%);
 }
 
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+

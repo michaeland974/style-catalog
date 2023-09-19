@@ -1,23 +1,31 @@
 @model style_catalog.Models.Account;
 
-<h1>Login</h1>
-  <div>
+@section css{
+  <link rel="stylesheet" href="~/css/Login/login.css" asp-append-version="true" />   
+}
+
+<div class="container">
+  <h1>Account Login</h1>
     <form asp-action="Login">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="group">
-          <label asp-for="username" class="control-label"></label>
+          <label asp-for="username" class="control-label">
+            @Html.Label("Username:")
+          </label>
             <input asp-for="username" class="form-control" />
             <span asp-validation-for="username" class="text-danger"></span>
         </div>
         <div class="group">
-            <label asp-for="password" class="control-label"></label>
-            <input asp-for="password" class="form-control" />
-            <span asp-validation-for="password" class="text-danger"></span>
+          <label asp-for="password" class="control-label">
+            @Html.Label("Password:")
+          </label>
+          <input asp-for="password" class="form-control" />
+          <span asp-validation-for="password" class="text-danger"></span>
         </div>
         <label>
             @* <input asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe) *@
         </label>
-        <input type="submit" value="Log In"/>
+        <input type="submit" value="Log In" id="account-login"/>
     </form>
   </div>
 

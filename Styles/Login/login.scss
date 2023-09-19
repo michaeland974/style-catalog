@@ -12,7 +12,7 @@ form,
   gap: 1em;
 }
 
-input:not(#account-create){
+input:not(#account-login){
   border: 1px solid global.$primary-dark;
   border-radius: $border-rounded;
 }
