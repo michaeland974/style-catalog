@@ -16,3 +16,20 @@ input:not(#account-create){
   border: 1px solid global.$primary-dark;
   border-radius: $border-rounded;
 }
+
+#account-create{
+  margin: 1em;
+  padding: 0.25em 1em 0.25em 1em;
+  // background-color: global.$light-grey;
+  border-radius: $border-rounded;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.4s ease-in-out;
+}
+
+#account-create:hover{
+  text-underline-offset: 8px;
+  transform: scale(1.1);
+}
+
+
