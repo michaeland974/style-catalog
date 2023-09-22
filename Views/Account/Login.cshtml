@@ -1,7 +1,8 @@
 @model style_catalog.Models.Account;
 
 @section css{
-  <link rel="stylesheet" href="~/css/Login/login.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Account/account.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/Account/login.css" asp-append-version="true" />      
 }
 
 <div class="container">
@@ -25,7 +26,7 @@
         <label>
             @* <input asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe) *@
         </label>
-        <input type="submit" value="Log In" id="account-login"/>
+        <input type="submit" value="Log In" class="account-submit" id="login"/>
     </form>
   </div>
 

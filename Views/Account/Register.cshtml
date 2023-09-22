@@ -3,7 +3,8 @@
     ViewData["Title"] = "Register";
 }
 @section css{
-  <link rel="stylesheet" href="~/css/Register/register.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Account/account.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Account/register.css" asp-append-version="true" />   
 }
 
 <div class="container">
@@ -39,7 +40,7 @@
           <input asp-for="confirmPassword" class="form-control" />
           <span asp-validation-for="confirmPassword" class="text-danger"></span>
       </div>
-      <input type="submit" value="Create"/>
+      <input type="submit" value="Create" class="account-submit" id="account-create"/>
   </form>
 </div>
 
