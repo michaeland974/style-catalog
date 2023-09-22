@@ -1,19 +1,25 @@
 #nullable disable
 
+using System;
 using style_catalog.Models;
+using style_catalog.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Azure.Identity;
 
 namespace style_catalog.Controllers;
 
 [Route("Account/[action]")]
 public class AccountController : Controller{
     private readonly UserManager<Account> _userManager;
+    private readonly DatabaseContext _context;
 
-    public AccountController(UserManager<Account> userManager){
+    public AccountController(UserManager<Account> userManager, DatabaseContext context){
       _userManager = userManager;
+      _context = context;
     }
 
     [HttpGet]
@@ -23,24 +29,25 @@ public class AccountController : Controller{
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Register(Account accountModel){
+    public async Task<IActionResult> Register(Account model){
       if(!ModelState.IsValid){
-        return View(accountModel);
+        return View(model);
       }
-      
-      var userAccount = new Account();
-      var result = await _userManager
-        .CreateAsync(userAccount, accountModel.password);
-      
+      var user = new Account(){ username = model.username };
+      var result = await _userManager.CreateAsync(user, model.password);
+        
       if(!result.Succeeded){
         foreach (var error in result.Errors){
-            ModelState.TryAddModelError(error.Code, error.Description);
+          ModelState.TryAddModelError(error.Code, error.Description);
+          Console.WriteLine($"Oops! {error.Description} ({error.Code})");
+          Console.WriteLine(model.username);
         }
-        return View(accountModel);
+        return View(model);
       }
-      await _userManager.AddToRoleAsync(userAccount, "Visitor");
-
-      return RedirectToAction(nameof(HomeController.Home), "Home");
+      else{
+        await _context.Account.AddAsync(user);
+        return RedirectToAction(nameof(HomeController.Home), "Home");
+      }
     }
 
     [HttpGet]
