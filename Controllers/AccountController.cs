@@ -33,14 +33,12 @@ public class AccountController : Controller{
       if(!ModelState.IsValid){
         return View(model);
       }
-      var user = new Account(){ username = model.username };
+      var user = new Account(){ UserName = model.UserName };
       var result = await _userManager.CreateAsync(user, model.password);
         
       if(!result.Succeeded){
         foreach (var error in result.Errors){
           ModelState.TryAddModelError(error.Code, error.Description);
-          Console.WriteLine($"Oops! {error.Description} ({error.Code})");
-          Console.WriteLine(model.username);
         }
         return View(model);
       }
@@ -62,13 +60,13 @@ public class AccountController : Controller{
         return View(accountModel);
       }
 
-      var userAccount = await _userManager.FindByNameAsync(accountModel.username);
+      var userAccount = await _userManager.FindByNameAsync(accountModel.UserName);
       if(userAccount != null && 
          await _userManager.CheckPasswordAsync(userAccount, accountModel.password))
       {
         var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
         identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, (userAccount.id).ToString()));
-        identity.AddClaim(new Claim(ClaimTypes.Name, userAccount.username));
+        identity.AddClaim(new Claim(ClaimTypes.Name, userAccount.UserName));
         await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                                       new ClaimsPrincipal(identity));
           
