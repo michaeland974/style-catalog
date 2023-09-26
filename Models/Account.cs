@@ -5,15 +5,14 @@ namespace style_catalog.Models;
 
 public class Account : IdentityUser{
   [Key]
-  public int id { get; set; }
-  public string firstName { get; set; }
+  public int Id { get; set; }
   public string UserName { get; set; }
 
   [Required(ErrorMessage = "Password is required")]
   [DataType(DataType.Password)]
-  public string password { get; set; }
+  public string Password { get; set; }
 
   [DataType(DataType.Password)]
-  [Compare("password", ErrorMessage = "The password and confirmation password do not match.")]
-  public string confirmPassword { get; set; }
+  [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+  public string ConfirmPassword { get; set; }
 }

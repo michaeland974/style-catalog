@@ -12,8 +12,8 @@ using style_catalog.Data;
 namespace style_catalog.Migrations.Account
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230822010424_ColumnCleanup")]
-    partial class ColumnCleanup
+    [Migration("20230926014911_AccountModelCleanup")]
+    partial class AccountModelCleanup
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,11 @@ namespace style_catalog.Migrations.Account
 
             modelBuilder.Entity("style_catalog.Models.Account", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
@@ -39,15 +39,15 @@ namespace style_catalog.Migrations.Account
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("text");
 
+                    b.Property<string>("ConfirmPassword")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Id")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -59,6 +59,10 @@ namespace style_catalog.Migrations.Account
                         .HasColumnType("text");
 
                     b.Property<string>("NormalizedUserName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
@@ -77,22 +81,10 @@ namespace style_catalog.Migrations.Account
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("confirmPassword")
-                        .HasColumnType("text");
-
-                    b.Property<string>("firstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("password")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("username")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Account");
                 });
