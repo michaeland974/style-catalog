@@ -1,4 +1,6 @@
+@using Microsoft.AspNetCore.Identity;
 @model style_catalog.Models.Account;
+@inject UserManager<Account> UserManager;
 
 @{
     ViewData["Title"] = "Register";
@@ -10,8 +12,10 @@
 
 <div class="container">
   <h1>Account Register</h1>
+
   <form asp-action="Register">
-      <div class="group" 
+      <div class="group"
+           class="validation-summary" 
            asp-validation-summary="All" 
            class="text-danger">
       </div>

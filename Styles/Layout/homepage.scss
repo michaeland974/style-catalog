@@ -12,12 +12,6 @@ $color-list:(
   'third': utils.add-opacity(global.$secondary)
 );
 
-// $color-list:(
-//   'first': utils.add-opacity(global.$accent),
-//   'second': utils.add-opacity(global.$primary-dark),
-//   'third': utils.add-opacity(global.$highlight)
-// );
-
 body{
   @include utils.background-gradient($color-list...);
 
