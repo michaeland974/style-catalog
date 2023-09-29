@@ -11,37 +11,28 @@
 <div class="container">
   <h1>Account Register</h1>
   <form asp-action="Register">
-      <div asp-validation-summary="All" class="text-danger"></div>
-      <div class="group">
-          <label asp-for="firstName" class="control-label">
-            @Html.Label("First Name:")
-          </label>
-          <input asp-for="firstName" class="form-control" />
-          <span asp-validation-for="firstName" class="text-danger"></span>
+      <div class="group" 
+           asp-validation-summary="All" 
+           class="text-danger">
       </div>
-
       <div class="group">
           <label asp-for="UserName" class="control-label">
             @Html.DisplayName("Username:")
           </label>
           <input asp-for="UserName" class="form-control" />
-          <span asp-validation-for="UserName" class="text-danger"></span>
       </div>
       <div class="group">
-          <label asp-for="password" class="control-label">
+          <label asp-for="Password" class="control-label">
             @Html.DisplayName("Password:")
           </label>
-          <input asp-for="password" class="form-control" />
-          <span asp-validation-for="password" class="text-danger"></span>
+          <input asp-for="Password" class="form-control" />
       </div>
       <div class="group">
-          <label asp-for="confirmPassword" class="control-label">
+          <label asp-for="ConfirmPassword" class="control-label">
             @Html.DisplayName("Confirm Password:")
           </label>
-          <input asp-for="confirmPassword" class="form-control" />
-          <span asp-validation-for="confirmPassword" class="text-danger"></span>
+          <input asp-for="ConfirmPassword" class="form-control" />
       </div>
-      @Html.ValidationSummary(true)
       <input type="submit" value="Create" class="account-submit" id="account-create"/>
   </form>
 </div>
