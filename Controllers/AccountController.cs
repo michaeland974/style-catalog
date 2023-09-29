@@ -33,8 +33,11 @@ public class AccountController : Controller{
       if(!ModelState.IsValid){
         return View(model);
       }
-      var user = new Account(){ UserName = model.UserName };
-      var result = await _userManager.CreateAsync(user, model.password);
+      var user = new Account(){ 
+        UserName = model.UserName,
+        Password = model.Password 
+      };
+      var result = await _userManager.CreateAsync(user, user.Password);
         
       if(!result.Succeeded){
         foreach (var error in result.Errors){
@@ -50,23 +53,25 @@ public class AccountController : Controller{
 
     [HttpGet]
     public IActionResult Login(){
+      Console.WriteLine("Here");
       return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(Account accountModel){
+    public async Task<IActionResult> Login(Account model){
+      ModelState.Remove("ConfirmPassword");
       if(!ModelState.IsValid){
-        return View(accountModel);
+        return View(model);
       }
+      var user = await _userManager.FindByNameAsync(model.UserName);
+      var result = await _userManager.CheckPasswordAsync(user, model.Password);
 
-      var userAccount = await _userManager.FindByNameAsync(accountModel.UserName);
-      if(userAccount != null && 
-         await _userManager.CheckPasswordAsync(userAccount, accountModel.password))
+      if(user != null && result)
       {
         var identity = new ClaimsIdentity(IdentityConstants.ApplicationScheme);
-        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, (userAccount.id).ToString()));
-        identity.AddClaim(new Claim(ClaimTypes.Name, userAccount.UserName));
+        identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, (user.Id).ToString()));
+        identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
         await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                                       new ClaimsPrincipal(identity));
           
