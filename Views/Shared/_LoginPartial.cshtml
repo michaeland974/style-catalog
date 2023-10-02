@@ -1,20 +1,33 @@
 @using Microsoft.AspNetCore.Identity
 @using style_catalog.Models
-
 @inject SignInManager<Account> SignInManager
 @inject UserManager<Account> UserManager
 
-<ul id="account-manager">
-    <li>
-        <a id="register" 
-           asp-controller="Account" 
-           asp-action="Register">Register
-        </a>
-    </li>
-    <li>
-        <a id="login" 
-           asp-controller="Account" 
-           asp-action="Login">Login
-        </a>
-    </li>
-</ul>
+@if (SignInManager.IsSignedIn(User)){
+    <ul class="account-manager">
+        <li>
+            Hello, @UserManager.GetUserName(User);
+        </li>
+        <li>
+            <a id="logout" 
+            asp-controller="Account" 
+            asp-action="">Logout</a>
+        </li>
+    </ul>        
+}
+else{
+    <ul class="account-manager">
+        <li>
+            <a id="register" 
+            asp-controller="Account" 
+            asp-action="Register">Register</a>
+        </li>
+        <li>
+            <a id="login" 
+            asp-controller="Account" 
+            asp-action="Login">Login</a>
+        </li>
+    </ul>
+}
+
+

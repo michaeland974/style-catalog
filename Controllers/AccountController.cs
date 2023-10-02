@@ -14,11 +14,15 @@ namespace style_catalog.Controllers;
 
 [Route("Account/[action]")]
 public class AccountController : Controller{
+    private readonly SignInManager<Account> _signInManager;
     private readonly UserManager<Account> _userManager;
     private readonly DatabaseContext _context;
 
-    public AccountController(UserManager<Account> userManager, DatabaseContext context){
+    public AccountController(UserManager<Account> userManager, 
+                             SignInManager<Account> signInManager,
+                             DatabaseContext context){
       _userManager = userManager;
+      _signInManager = signInManager;
       _context = context;
     }
 
@@ -74,6 +78,7 @@ public class AccountController : Controller{
         identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
         await HttpContext.SignInAsync(IdentityConstants.ApplicationScheme,
                                       new ClaimsPrincipal(identity));
+        
           
         return RedirectToAction(nameof(HomeController.Home), "Home");
       }
