@@ -57,7 +57,6 @@ public class AccountController : Controller{
 
     [HttpGet]
     public IActionResult Login(){
-      Console.WriteLine("Here");
       return View();
     }
 
@@ -86,5 +85,10 @@ public class AccountController : Controller{
         ModelState.AddModelError("", "Invalid UserName or Password");
         return View();
       }
+    }
+
+    public new async Task<IActionResult> SignOut(){
+      await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+      return RedirectToAction(nameof(HomeController.Home), "Home");
     }
 }
