@@ -51,6 +51,7 @@ public class AccountController : Controller{
       }
       else{
         await _context.Account.AddAsync(user);
+        await Login(user);
         return RedirectToAction(nameof(HomeController.Home), "Home");
       }
     }
