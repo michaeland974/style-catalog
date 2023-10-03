@@ -51,19 +51,19 @@ public class AccountController : Controller{
       }
       else{
         await _context.Account.AddAsync(user);
-        await Login(user);
+        await SignIn(user);
         return RedirectToAction(nameof(HomeController.Home), "Home");
       }
     }
 
     [HttpGet]
-    public IActionResult Login(){
+    public IActionResult SignIn(){
       return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(Account model){
+    public async Task<IActionResult> SignIn(Account model){
       ModelState.Remove("ConfirmPassword");
       if(!ModelState.IsValid){
         return View(model);
