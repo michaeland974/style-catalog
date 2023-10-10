@@ -19,8 +19,26 @@ public class MixinController : Controller
     _context = context;
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Create(Mixin model){
+      if(!ModelState.IsValid){
+        return View(model);
+      }
+
+      var userId = _userManager.GetUserId(User);
+      var mixin = new Mixin(){ 
+        name = model.name,
+        body = model.body,
+        AccountId = userId
+      };
+
+      await _context.Mixin.AddAsync(mixin);
+      return RedirectToAction(nameof(List), "List");
+    }
+
+    [HttpGet]
     public IActionResult List(){
-      string userId = _userManager.GetUserId(User);
+      var userId = _userManager.GetUserId(User);
       var mixinList = _context.Mixin.Where(mixin => (
         mixin.AccountId == userId
       ));
@@ -31,5 +49,20 @@ public class MixinController : Controller
     [HttpGet("{id}")]   
     public IActionResult Select(string id){
       return View(ViewBag.id);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> AddTo(){
+      return View();
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Edit(){
+      return View();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> Delete(){
+      return View();
     }
 }
