@@ -1,13 +1,12 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace style_catalog.Migrations.Account
+namespace style_catalog.Migrations
 {
     /// <inheritdoc />
-    public partial class IntialAccountCreate : Migration
+    public partial class AccountModelInitial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,13 +15,10 @@ namespace style_catalog.Migrations.Account
                 name: "Account",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    firstName = table.Column<string>(type: "text", nullable: true),
-                    username = table.Column<string>(type: "text", nullable: true),
-                    passwordHash = table.Column<string>(type: "text", nullable: true),
                     Id = table.Column<string>(type: "text", nullable: false),
                     UserName = table.Column<string>(type: "text", nullable: true),
+                    Password = table.Column<string>(type: "text", nullable: false),
+                    ConfirmPassword = table.Column<string>(type: "text", nullable: true),
                     NormalizedUserName = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
                     NormalizedEmail = table.Column<string>(type: "text", nullable: true),
@@ -39,7 +35,7 @@ namespace style_catalog.Migrations.Account
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Account", x => x.id);
+                    table.PrimaryKey("PK_Account", x => x.Id);
                 });
         }
 

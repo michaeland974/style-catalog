@@ -2,21 +2,18 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using style_catalog.Data;
 
 #nullable disable
 
-namespace style_catalog.Migrations.Account
+namespace style_catalog.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230819050353_IntialAccountCreate")]
-    partial class IntialAccountCreate
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,11 +24,8 @@ namespace style_catalog.Migrations.Account
 
             modelBuilder.Entity("style_catalog.Models.Account", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
@@ -39,15 +33,14 @@ namespace style_catalog.Migrations.Account
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("text");
 
+                    b.Property<string>("ConfirmPassword")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Id")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -59,6 +52,10 @@ namespace style_catalog.Migrations.Account
                         .HasColumnType("text");
 
                     b.Property<string>("NormalizedUserName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
@@ -79,18 +76,42 @@ namespace style_catalog.Migrations.Account
                     b.Property<string>("UserName")
                         .HasColumnType("text");
 
-                    b.Property<string>("firstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("passwordHash")
-                        .HasColumnType("text");
-
-                    b.Property<string>("username")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Account");
+                });
+
+            modelBuilder.Entity("style_catalog.Models.Mixin", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("AccountId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("body")
+                        .HasColumnType("text");
+
+                    b.Property<string>("name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("Mixin");
+                });
+
+            modelBuilder.Entity("style_catalog.Models.Mixin", b =>
+                {
+                    b.HasOne("style_catalog.Models.Account", null)
+                        .WithMany("Mixins")
+                        .HasForeignKey("AccountId");
+                });
+
+            modelBuilder.Entity("style_catalog.Models.Account", b =>
+                {
+                    b.Navigation("Mixins");
                 });
 #pragma warning restore 612, 618
         }

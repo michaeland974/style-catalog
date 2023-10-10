@@ -8,6 +8,7 @@ public class DatabaseContext : DbContext{
         : base(options){}
 
     public DbSet<Account> Account { get; set; } = default!;
+    public DbSet<Mixin> Mixin { get; set; } = default!;
 
     protected override void OnModelCreating(ModelBuilder builder){
         base.OnModelCreating(builder);

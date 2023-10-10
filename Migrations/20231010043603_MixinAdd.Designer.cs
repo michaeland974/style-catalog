@@ -9,11 +9,11 @@ using style_catalog.Data;
 
 #nullable disable
 
-namespace style_catalog.Migrations.Account
+namespace style_catalog.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230820030004_AccountUpdate")]
-    partial class AccountUpdate
+    [Migration("20231010043603_MixinAdd")]
+    partial class MixinAdd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,8 @@ namespace style_catalog.Migrations.Account
 
             modelBuilder.Entity("style_catalog.Models.Account", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
@@ -39,15 +36,14 @@ namespace style_catalog.Migrations.Account
                     b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("text");
 
+                    b.Property<string>("ConfirmPassword")
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
-
-                    b.Property<string>("Id")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -59,6 +55,10 @@ namespace style_catalog.Migrations.Account
                         .HasColumnType("text");
 
                     b.Property<string>("NormalizedUserName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
@@ -79,22 +79,42 @@ namespace style_catalog.Migrations.Account
                     b.Property<string>("UserName")
                         .HasColumnType("text");
 
-                    b.Property<string>("confirmPassword")
-                        .HasColumnType("text");
-
-                    b.Property<string>("firstName")
-                        .HasColumnType("text");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("username")
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Account");
+                });
+
+            modelBuilder.Entity("style_catalog.Models.Mixin", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("AccountId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("body")
+                        .HasColumnType("text");
+
+                    b.Property<string>("name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
+
+                    b.ToTable("Mixin");
+                });
+
+            modelBuilder.Entity("style_catalog.Models.Mixin", b =>
+                {
+                    b.HasOne("style_catalog.Models.Account", null)
+                        .WithMany("Mixins")
+                        .HasForeignKey("AccountId");
+                });
+
+            modelBuilder.Entity("style_catalog.Models.Account", b =>
+                {
+                    b.Navigation("Mixins");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Collections;
 using Microsoft.AspNetCore.Identity;
 
 #nullable disable
@@ -17,4 +18,6 @@ public class Account : IdentityUser{
   [DataType(DataType.Password)]
   [Compare(nameof(Password), ErrorMessage = "The password and confirmation password do not match.")]
   public string ConfirmPassword { get; set; }
+
+  public ICollection<Mixin> Mixins { get; set; }
 }

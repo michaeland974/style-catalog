@@ -9,11 +9,11 @@ using style_catalog.Data;
 
 #nullable disable
 
-namespace style_catalog.Migrations.Account
+namespace style_catalog.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230926014911_AccountModelCleanup")]
-    partial class AccountModelCleanup
+    [Migration("20230927010628_AccountModelInitial")]
+    partial class AccountModelInitial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,11 +27,8 @@ namespace style_catalog.Migrations.Account
 
             modelBuilder.Entity("style_catalog.Models.Account", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
@@ -40,7 +37,6 @@ namespace style_catalog.Migrations.Account
                         .HasColumnType("text");
 
                     b.Property<string>("ConfirmPassword")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
@@ -81,7 +77,6 @@ namespace style_catalog.Migrations.Account
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
