@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace style_catalog.Controllers;
 
-[Route("Mixin/[action]/[id?]")]
+[Route("Mixin/[action]")]
 public class MixinController : Controller
 {
     private readonly UserManager<Account> _userManager;
@@ -19,6 +19,11 @@ public class MixinController : Controller
     _context = context;
     }
 
+    [HttpGet]
+    public IActionResult Create(){
+      return View();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create(Mixin model){
       if(!ModelState.IsValid){
@@ -26,43 +31,50 @@ public class MixinController : Controller
       }
 
       var userId = _userManager.GetUserId(User);
-      var mixin = new Mixin(){ 
+      var mixin = new Mixin(){
+        AccountId = userId,
+        Id = Guid.NewGuid().ToString(),
         name = model.name,
-        body = model.body,
-        AccountId = userId
+        body = model.body
       };
-
-      await _context.Mixin.AddAsync(mixin);
-      return RedirectToAction(nameof(List), "List");
+      var result = await _context.Mixin.AddAsync(mixin);
+      
+      if(result is null){
+        return View(model);
+      }
+      else{
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(HomeController.Home), "Home");
+      }
     }
 
     [HttpGet]
     public IActionResult List(){
       var userId = _userManager.GetUserId(User);
-      var mixinList = _context.Mixin.Where(mixin => (
-        mixin.AccountId == userId
+      var mixins = _context.Mixin.Where(mixin => (
+        mixin.Id == userId
       ));
       
-      return View(mixinList);
+      return View(mixins);
     }
 
-    [HttpGet("{id}")]   
+    [HttpGet]
     public IActionResult Select(string id){
       return View(ViewBag.id);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> AddTo(){
-      return View();
-    }
+    // [HttpPut]
+    // public async Task<IActionResult> AddTo(){
+    //   return View();
+    // }
 
-    [HttpPut]
-    public async Task<IActionResult> Edit(){
-      return View();
-    }
+    // [HttpPut]
+    // public async Task<IActionResult> Edit(){
+    //   return View();
+    // }
 
-    [HttpDelete]
-    public async Task<IActionResult> Delete(){
-      return View();
-    }
+    // [HttpDelete]
+    // public async Task<IActionResult> Delete(){
+    //   return View();
+    // }
 }
