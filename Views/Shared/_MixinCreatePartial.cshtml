@@ -13,23 +13,23 @@
   </div>
 
   <div>
-    <span class="tag">
+    <span class="stamp" data="tag">
       @@mixin
     </span>
     <span>
       <input asp-for="name"
-            id="name"
-            placeholder="square"/>
+             class="name"
+             placeholder="square"/>
     </span> 
-    <span>{</span>
+    <span data="tag">{</span>
   </div>
 
   <div>
-    <span>(</span>
+    <span data="tag">(</span>
       <input asp-for="arguments"
-            id="arguments"
-            placeholder=@argumentPlaceholder/>
-    <span>)</span>
+             class="arguments"
+             placeholder=@argumentPlaceholder/>
+    <span data="tag">)</span>
   </div>
   
   <div>
@@ -38,7 +38,7 @@
       @placeholder=@propertyPlaceholder, 
       @class = "formatted-body"}
     )
-    <div>}</div>
+    <div class="icon">}</div>
   </div> 
 
   <input type="submit" value="Create" class="submit" id="mixin-create"/>

@@ -1,10 +1,12 @@
 @model style_catalog.Models.Mixin;
 
 <div class="snippet">
-  <span class="tag">@@mixin</span>
-  <span>@this.ViewData["name"]</span>
+  <span class="stamp" 
+        data="tag">@@mixin</span>
+  <span class="name" 
+        data="tag">@this.ViewData["name"]</span>
   {
-    <pre>
+    <pre class="formatted-body">
       @this.ViewData["body"]
     </pre>
   }

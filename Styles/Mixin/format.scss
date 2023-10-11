@@ -1,10 +1,51 @@
 @use '../base/global';
+@use '../base/utils';
 
-.tag{
-  color: global.$primary-dark;
+.container{
+  @include utils.flex-column-center;
+  gap: 1.5em;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+textarea{
+  margin: 1em 0em 1em 0em;
+  padding: 0.75em;
+  background: none;
+  border: none;
+  border-radius: global.$border-rounded;
+  @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
+}
+
+input{
   font-weight: bold;
+  color: global.$primary-dark;
+  border-bottom: 2px solid global.$primary-dark;
+}
+
+[data="tag"]{
+  font-weight: bold;
+}
+
+.stamp{
+  color: global.$primary-dark;
+}
+
+.name, 
+.name::placeholder{ 
+  color: global.$accent; 
+}
+
+.arguments, 
+.arguments::placeholder{ 
+  color: global.$accent-secondary; 
 }
 
 ::placeholder{
   opacity: 1;
 }
+

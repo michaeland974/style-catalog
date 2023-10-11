@@ -1,11 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using style_catalog.Models
+@inject SignInManager<Account> SignInManager
+@inject UserManager<Account> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mixin Catalog</title>
     <link rel="stylesheet" href="~/css/base/reset.css" asp-append-version="true" />   
-    @* <link rel="stylesheet" href="~/css/base/_global.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="~/css/Layout/homepage.css" asp-append-version="true" />     
     @RenderSection("css", required: false)
 </head>
@@ -31,12 +35,18 @@
             </li>
             <li>
                 <a asp-controller="Home" 
-                   asp-action="Privacy">Privacy</a>
+                   asp-action="Browse">Browse Mixins</a>
+            </li>
+            @if (SignInManager.IsSignedIn(User)){
+            <li>
+                <a asp-controller="Mixin" 
+                   asp-action="List">List of Mixins</a>
             </li>
             <li>
-                <a asp-controller="User" 
-                   asp-action="Index">User Index</a>
+                <a asp-controller="Mixin" 
+                   asp-action="Create">Create a new mixin</a>
             </li>
+            }
         </ul>
     </nav>
     
