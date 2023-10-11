@@ -1,0 +1,45 @@
+@model style_catalog.Models.Mixin;
+
+@{
+  string argumentPlaceholder = "$size";
+  string propertyPlaceholder = @"width: $size;
+                                 height: $size;";
+}
+
+<form asp-action="Create" class="snippet">
+  <div class="validation-summary" 
+       asp-validation-summary="All" 
+      class="text-danger">
+  </div>
+
+  <div>
+    <span class="tag">
+      @@mixin
+    </span>
+    <span>
+      <input asp-for="name"
+            id="name"
+            placeholder="square"/>
+    </span> 
+    <span>{</span>
+  </div>
+
+  <div>
+    <span>(</span>
+      <input asp-for="arguments"
+            id="arguments"
+            placeholder=@argumentPlaceholder/>
+    <span>)</span>
+  </div>
+  
+  <div>
+    @Html.TextAreaFor(model => model.body, new {
+      rows=5,
+      @placeholder=@propertyPlaceholder, 
+      @class = "formatted-body"}
+    )
+    <div>}</div>
+  </div> 
+
+  <input type="submit" value="Create" class="submit" id="mixin-create"/>
+</form>
