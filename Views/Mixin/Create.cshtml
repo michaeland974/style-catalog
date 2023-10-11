@@ -1,0 +1,37 @@
+@* @using Microsoft.AspNetCore.Identity; *@
+@model style_catalog.Models.Mixin;
+@* @inject UserManager<Account> UserManager; *@
+
+@{
+    ViewData["Title"] = "Create";
+}
+@section css{
+  <link rel="stylesheet" href="~/css/Mixin/create.css" asp-append-version="true" />   
+}
+
+<div class="container">
+  <h1>Create New Mixin</h1>
+
+  <partial name="_MixinCreatePartial" />
+
+  @* <form asp-action="Create">
+      <div class="group"
+           class="validation-summary" 
+           asp-validation-summary="All" 
+           class="text-danger">
+      </div>
+      <div class="group">
+          <label asp-for="name" class="control-label">
+            @Html.DisplayName("name")
+          </label>
+          <input asp-for="name" class="form-control" />
+      </div>
+      <div class="group">
+          <label asp-for="body" class="control-label">
+            @Html.DisplayName("body:")
+          </label>
+          <input asp-for="body" class="form-control" />
+      </div>
+      <input type="submit" value="Create" class="submit" id="mixin-create"/>
+  </form> *@
+</div>
