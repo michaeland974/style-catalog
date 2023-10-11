@@ -1,4 +1,15 @@
-div{
-  background-color: bisque;
+@use '../base/global';
+@use '../base/utils';
+
+.snippet{
+  display: flex;
+  flex-direction: column;
 }
 
+.formatted-body{
+  @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
+  font-family: 'Courier New', Courier, monospace;
+  border-radius: global.$border-rounded;
+  padding: 0.75em 0.75em 0.75em 20px;
+  margin: 0.3em 0.3em 0.3em 0;
+}

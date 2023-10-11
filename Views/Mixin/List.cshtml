@@ -18,7 +18,8 @@ else{
       mixin,
       new ViewDataDictionary(this.Vi‌​ewData) {
       { "name", mixin.name },
-      { "body", mixin.body}
+      { "body", mixin.body },
+      { "arguments", mixin.arguments is null ? "" : $"({mixin.arguments})"},
     })
   }
 }

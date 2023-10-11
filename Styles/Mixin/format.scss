@@ -5,6 +5,10 @@
   @include utils.flex-column-center;
   gap: 1.5em;
 }
+.formatted-body{
+  color: global.$dark-grey;
+}
+
 
 form{
   display: flex;
