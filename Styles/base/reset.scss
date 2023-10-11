@@ -36,8 +36,12 @@ html:focus-within {
 }
 
 /* Set core body defaults */
+html{
+  height: 100dvh;
+}
+
 body {
-  height: 100vh;
+  height: 100%;
 	font-size: 16px;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
@@ -87,4 +91,10 @@ button, input {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+textarea, pre{
+  white-space: pre-line;
+  margin: 0;
+  padding: 0;
 }

@@ -1,0 +1,10 @@
+@use '../base/global';
+
+.tag{
+  color: global.$primary-dark;
+  font-weight: bold;
+}
+
+::placeholder{
+  opacity: 1;
+}

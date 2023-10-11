@@ -1,6 +1,6 @@
 @use '../base/global';
 @use '../base/utils';
-$border-rounded: 10px;
+// $border-rounded: 10px;
 
 form, 
 .container, 
@@ -14,14 +14,14 @@ form,
 
 input:not(.account-submit){
   border: 1px solid global.$primary-dark;
-  border-radius: $border-rounded;
+  border-radius: global.$border-rounded;
 }
 
 .account-submit{
   margin: 1em;
   padding: 0.25em 1em 0.25em 1em;
   // background-color: global.$light-grey;
-  border-radius: $border-rounded;
+  border-radius: global.$border-rounded;
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: all 0.4s ease-in-out;

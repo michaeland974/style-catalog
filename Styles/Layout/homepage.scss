@@ -7,9 +7,9 @@
 }
 
 $color-list:(
-  'first': utils.add-opacity(global.$primary),
+  'first': utils.add-opacity(global.$primary, 0.4),
   'second': global.$white,
-  'third': utils.add-opacity(global.$secondary)
+  'third': utils.add-opacity(global.$secondary, 0.4)
 );
 
 body{
@@ -19,6 +19,7 @@ body{
   flex-direction: column;
   justify-content: space-between;
   font-family: 'Courier New', Courier, monospace;
+  background-attachment: fixed;
   
   nav{
     ul{

@@ -1,5 +1,5 @@
-@function add-opacity($base-color) {
-  @return rgba($base-color, 0.4);
+@function add-opacity($base-color, $value) {
+  @return rgba($base-color, $value);
 }
 
 @mixin background-gradient($first, $second, $third: "default"){ 
@@ -13,5 +13,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center
+}
+
+@mixin box-shadow($value){
+  -webkit-box-shadow: $value;
+  -moz-box-shadow: $value;
+  box-shadow: $value;
 }
 
