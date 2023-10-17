@@ -2,6 +2,14 @@
     ViewData["Title"] = "Home";
 }
 
-<a asp-controller="Home" asp-action="Browse" id="call-to-action">
-    Browse Mixins <span>&#8658;</span>
-</a>
+<div>
+    <h1 id="page-desc">Build a catalog of your favorite SASS mixins!</h1>
+    <a asp-controller="Home" asp-action="Browse" class="call-to-actions">
+        <span>&#8658;</span> Browse Mixins
+    </a>
+    <a href="https://sass-lang.com/documentation/at-rules/mixin/"
+       target="_blank"
+       class="call-to-actions">
+        <span>&#8658;</span> View the docs
+    </a>
+</div>
