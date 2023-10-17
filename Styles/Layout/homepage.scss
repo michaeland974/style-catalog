@@ -12,8 +12,6 @@ $color-list:(
   'third': utils.add-opacity(global.$secondary, 0.4)
 );
 
-$menu-open: 'input[type="checkbox"]:checked';
-
 body{
   @include utils.background-gradient($color-list...);
 
@@ -36,85 +34,47 @@ body{
   }
 }
 
-#logo{
+#call-to-action{
+  display: inline-block;
   color: global.$primary-dark;
-  font-size: 2.5em;
+  font-size: global.$fs-600;
   font-family: Bungee;
   text-decoration: global.$primary-dark blink underline;
-  background: -webkit-linear-gradient(transparent, transparent, global.$primary-dark);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-stroke-width: 1.5px;
-  transition: all 0.5s ease-out 20ms;
+  border-radius: global.$border-rounded;
+  padding: 0 1em 0 1em;
+  -webkit-text-stroke-width: 0.5px;
+
+  background: linear-gradient(to left, transparent 50%, 
+                                     global.$primary-dark 50%) right;
+  background-size: 200%;
+  transition: all .3s ease-in;
 }
 
-#logo:hover{
-  -webkit-text-fill-color: transparent; 
+#call-to-action:hover{
+  color: global.$white;
+  transform: translate(10px, 0);
+  background-position: left;
 }
 
-// .mobile-top{
-//   position: relative;
-// }
+#logo{
+  font-size: global.$fs-xl;
+  -webkit-text-stroke-width: 2px;
+  text-decoration: underline;
+  color: global.$primary-dark;
+  font-family: Bungee;
+  position: relative;
+  padding: 1rem 1rem 1rem 1rem;
+  border-bottom: 8px solid global.$primary-dark;
+  border-right: 8px solid global.$primary-dark;
+  border-bottom-right-radius: global.$border-rounded;
+  width: 25%;
+  display: inline-flex;
+  @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
+}
 
-// #mobile-menu{
-//   $margin: 20px;
-//   $icon-height: 30px;
 
-//   @include utils.flex-column-center;
-//   top: 0px;
-//   right: 0px;
-//   position: absolute;
-//   z-index: 2;
-//   margin: $margin $margin 0 0;
 
-//   .list{
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-start;
 
-//     opacity: 0;
-//     transform: translateX(100px);
-//     transition: all .5s ease-out;
-//   }
 
-//   #{$menu-open} ~ nav .list{
-//     transform: translateX(0px);
-//     opacity: 1;
-//   }
 
-//   #icon{
-//     display: inline-block;
-//     z-index: 3;
-//     cursor: pointer;
-//     height: $icon-height;
 
-//     .bar{
-//       display: block;
-//       background-color: global.$primary-dark;
-//       width: 30px;
-//       height: 3px;
-//       border-radius: 5px;
-//       margin: 5px auto;
-//       transition: transform .4s ease-in-out, width .4s ease-in;
-//     }
-//   }
-
-//   #{$menu-open} ~ #icon .top{
-//     @include utils.transform-Z(0, 45deg);
-//   }
-  
-//   #{$menu-open} ~ #icon .middle{
-//     width: 0;
-//   }
-//   .middle {
-//     margin: 0 auto;
-//   }
-
-//   #{$menu-open} ~ #icon .bottom{
-//     @include utils.transform-Z(-15px, -45deg);
-//   }
-
-//   #toggle{
-//     display: none;
-//   }
-// }

@@ -29,3 +29,20 @@
   transform: translateY($valueY) rotateZ($valueZ);
 }
 
+@mixin animating($name, $duration){
+  -moz-animation: $name $duration linear infinite forwards;
+  -webkit-animation: $name $duration linear infinite forwards;
+  animation: $name $duration linear infinite forwards;
+}
+
+@mixin visibility($condition){
+  @if($condition == 'visible'){
+    opacity: 1;
+    visibility: visible;
+  }
+  @if($condition == 'hidden'){
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+

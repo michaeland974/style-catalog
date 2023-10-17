@@ -3,10 +3,6 @@
 
 $menu-open: 'input[type="checkbox"]:checked';
 
-.mobile-top{
-  position: relative;
-}
-
 #mobile-menu{
   $margin: 20px;
   $icon-height: 30px;
@@ -23,14 +19,12 @@ $menu-open: 'input[type="checkbox"]:checked';
     flex-direction: column;
     align-items: flex-start;
 
-    opacity: 0;
-    transform: translateX(100px);
     transition: all .5s ease-out;
+    @include utils.visibility("hidden");
   }
 
   #{$menu-open} ~ nav .list{
-    transform: translateX(0px);
-    opacity: 1;
+    @include utils.visibility("visible");
   }
 
   #icon{
