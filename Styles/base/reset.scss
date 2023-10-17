@@ -94,7 +94,13 @@ button, input {
 }
 
 textarea, pre{
-  white-space: pre-line;
+  display: flex;
+  justify-content: flex-start;
+  white-space: pre;
   margin: 0;
   padding: 0;
+}
+
+a{
+  all: unset;
 }

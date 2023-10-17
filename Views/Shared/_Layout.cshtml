@@ -10,23 +10,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mixin Catalog</title>
     <link rel="stylesheet" href="~/css/base/reset.css" asp-append-version="true" />   
-    <link rel="stylesheet" href="~/css/Layout/homepage.css" asp-append-version="true" />     
+    <link rel="stylesheet" href="~/css/Layout/homepage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Layout/mobile-menu.css" asp-append-version="true" />          
     @RenderSection("css", required: false)
 </head>
 <body>
-    <nav>
-        <ul class="top">
-            <li>
-                <a asp-controller="Home" 
-                    asp-action="Home"
-                    id="logo">Mixin Catalog</a> 
-            </li>
-            <partial name="_SignInPartial" />
-        </ul>
-    </nav>
+    <div class="mobile-top">
+        <a asp-controller="Home" 
+            asp-action="Home"
+            id="logo">Mixin Catalog
+        </a> 
+        <partial name="_MobileMenuPartial"/>
+    </div>
+
     <main>        
         @RenderBody()
     </main>
+    
     <nav>
         <ul class="bottom">
             <li>

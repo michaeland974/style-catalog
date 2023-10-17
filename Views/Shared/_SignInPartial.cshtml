@@ -4,30 +4,26 @@
 @inject UserManager<Account> UserManager
 
 @if (SignInManager.IsSignedIn(User)){
-    <ul class="account-manager">
-        <li>
-            Hello, @UserManager.GetUserName(User);
-        </li>
-        <li>
-            <a id="logout" 
-            asp-controller="Account" 
-            asp-action="SignOut">Sign out</a>
-        </li>
-    </ul>        
+    <li>
+        Hello, @UserManager.GetUserName(User);
+    </li>
+    <li>
+        <a id="logout" 
+        asp-controller="Account" 
+        asp-action="SignOut">Sign out</a>
+    </li>
 }
 else{
-    <ul class="account-manager">
-        <li>
-            <a id="register" 
-            asp-controller="Account" 
-            asp-action="Register">Register</a>
-        </li>
-        <li>
-            <a id="login" 
-            asp-controller="Account" 
-            asp-action="SignIn">Sign in</a>
-        </li>
-    </ul>
+    <li>
+        <a id="register" 
+        asp-controller="Account" 
+        asp-action="Register">Register</a>
+    </li>
+    <li>
+        <a id="login" 
+        asp-controller="Account" 
+        asp-action="SignIn">Sign in</a>
+    </li>
 }
 
 

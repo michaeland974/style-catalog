@@ -17,11 +17,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy(){
-        return View();
-    }
-
-    public IActionResult SignIn(){
+    public IActionResult Browse(){
         return View();
     }
 

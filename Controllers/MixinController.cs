@@ -35,7 +35,8 @@ public class MixinController : Controller
         AccountId = userId,
         Id = Guid.NewGuid().ToString(),
         name = model.name,
-        body = model.body
+        body = model.body,
+        arguments = model.arguments
       };
       var result = await _context.Mixin.AddAsync(mixin);
       
@@ -44,7 +45,7 @@ public class MixinController : Controller
       }
       else{
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(HomeController.Home), "Home");
+        return RedirectToAction(nameof(MixinController.List), "List");
       }
     }
 
@@ -52,7 +53,7 @@ public class MixinController : Controller
     public IActionResult List(){
       var userId = _userManager.GetUserId(User);
       var mixins = _context.Mixin.Where(mixin => (
-        mixin.Id == userId
+        mixin.AccountId == userId
       ));
       
       return View(mixins);

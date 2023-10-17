@@ -8,7 +8,7 @@
   background: -moz-linear-gradient(45deg, $first 0%, $second 50%, $third 100%);
 }
 
-@mixin flex-column-center {
+@mixin flex-column-center{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,5 +19,13 @@
   -webkit-box-shadow: $value;
   -moz-box-shadow: $value;
   box-shadow: $value;
+}
+
+@mixin transform-Z($valueY, $valueZ){
+  -webkit-transform: translateY($valueY) rotateZ($valueZ);
+  -moz-transform: translateY($valueY) rotateZ($valueZ);
+  -ms-transform: translateY($valueY) rotateZ($valueZ);
+  -o-transform: translateY($valueY) rotateZ($valueZ);
+  transform: translateY($valueY) rotateZ($valueZ);
 }
 

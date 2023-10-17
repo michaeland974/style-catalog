@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
+
 using Microsoft.EntityFrameworkCore;
 using Azure.Identity;
 
@@ -92,4 +94,5 @@ public class AccountController : Controller{
       await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
       return RedirectToAction(nameof(HomeController.Home), "Home");
     }
+
 }

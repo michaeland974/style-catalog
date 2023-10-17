@@ -1,14 +1,16 @@
-@model style_catalog.Models.Account;
+@model IQueryable<Mixin>;
 
 @{
     ViewData["Title"] = "Browse";
 }
 @section css{
-  <link rel="stylesheet" href="~/css/Browse/browse.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Mixin/format.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Mixin/list.css" asp-append-version="true" />   
 }
 
-<h1>@ViewData["Title"] Mixins</h1>
-<div class="one">
+<div class="container">
+  <h1>@ViewData["Title"] Mixins</h1>
+
   @await Html.PartialAsync(
     "../Shared/_MixinPartial.cshtml",
     Model,
@@ -18,4 +20,5 @@
     }
   )
 </div>
+
 
