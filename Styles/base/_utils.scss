@@ -46,3 +46,16 @@
   }
 }
 
+@mixin background-transition($color){
+  background: linear-gradient(to left, transparent 51%, 
+                                 $color 50%) right;
+  background-size: 200%;
+  transition: all .3s ease-in;
+}
+
+@mixin background-transition-hover($color){
+  color: $color;
+  transform: translate(10px, 0);
+  background-position: left;
+}
+

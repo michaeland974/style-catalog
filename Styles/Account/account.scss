@@ -1,6 +1,5 @@
 @use '../base/global';
 @use '../base/utils';
-// $border-rounded: 10px;
 
 form, 
 .container, 
@@ -10,24 +9,24 @@ form,
 
 .container{
   gap: 1em;
+  font-size: global.$fs-400;
+}
+
+h1{
+  font-weight: bold;
 }
 
 input:not(.account-submit){
-  border: 1px solid global.$primary-dark;
-  border-radius: global.$border-rounded;
+  border: 2px solid global.$primary-dark;
 }
 
 .account-submit{
   margin: 1em;
   padding: 0.25em 1em 0.25em 1em;
-  // background-color: global.$light-grey;
-  border-radius: global.$border-rounded;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: all 0.4s ease-in-out;
+  font-weight: bold;
+  @include utils.background-transition(global.$primary-dark);
 }
 
 .account-submit:hover{
-  text-underline-offset: 8px;
-  transform: scale(1.1);
+  @include utils.background-transition-hover(global.$white);
 }

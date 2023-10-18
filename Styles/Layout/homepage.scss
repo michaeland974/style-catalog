@@ -22,6 +22,8 @@ body{
   font-family: 'Courier New', Courier, monospace;
   background-attachment: fixed;
   overflow-x: hidden;
+  color: global.$primary-dark;
+  font-size: global.$fs-400;
 
   aspect-ratio: 600/900;
   width: 100%;
@@ -39,6 +41,11 @@ body{
 
   main{
     align-self: flex-start;
+    padding-left: 1em;
+
+    @media screen and (min-width: media.$mobile){
+      align-self: center;
+    }
   }
 }
 
@@ -55,17 +62,11 @@ body{
   font-size: global.$fs-600;
   font-weight: bold;
   padding: 0.5em 1em 0.5em 1em;
-
-  background: linear-gradient(to left, transparent 51%, 
-                                     global.$primary-dark 50%) right;
-  background-size: 200%;
-  transition: all .3s ease-in;
+  @include utils.background-transition(global.$primary-dark);
 }
 
 .call-to-actions:hover{
-  color: global.$white;
-  transform: translate(10px, 0);
-  background-position: left;
+  @include utils.background-transition-hover(global.$white);
 }
 
 #logo{
