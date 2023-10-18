@@ -8,19 +8,20 @@
   <link rel="stylesheet" href="~/css/Mixin/list.css" asp-append-version="true" />   
 }
 
-@if(Model.Count()==0){
-  <div>no mixins</div>
-}
-else{
-  foreach(var mixin in Model){
-    @await Html.PartialAsync(
-      "../Shared/_MixinPartial.cshtml",
-      mixin,
-      new ViewDataDictionary(this.Vi‌​ewData) {
-      { "name", mixin.name },
-      { "body", mixin.body },
-      { "arguments", mixin.arguments is null ? "" : $"({mixin.arguments})"},
-    })
+<div id="mixin-list">
+  @if(Model.Count()==0){
+    <div>Mixin list is empty</div>
   }
-}
-
+  else{
+    foreach(var mixin in Model){
+      @await Html.PartialAsync(
+        "../Shared/_MixinPartial.cshtml",
+        mixin,
+        new ViewDataDictionary(this.Vi‌​ewData) {
+        { "name", mixin.name },
+        { "body", mixin.body },
+        { "arguments", mixin.arguments is null ? "" : $"({mixin.arguments})"},
+      })
+    }
+  }
+</div>

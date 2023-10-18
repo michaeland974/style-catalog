@@ -30,24 +30,19 @@
 
     <nav>
         <ul class="bottom">
+        @if (SignInManager.IsSignedIn(User)){
             <li>
-                <a asp-controller="Home" 
-                   asp-action="Home">Home</a>
-            </li>
-            <li>
-                <a asp-controller="Home" 
-                   asp-action="Browse">Browse Mixins</a>
-            </li>
-            @if (SignInManager.IsSignedIn(User)){
-            <li>
-                <a asp-controller="Mixin" 
-                   asp-action="List">List of Mixins</a>
+                Hello, @UserManager.GetUserName(User)
             </li>
             <li>
                 <a asp-controller="Mixin" 
-                   asp-action="Create">Create a new mixin</a>
+                    asp-action="List">List of Mixins</a>
             </li>
-            }
+            <li>
+                <a asp-controller="Mixin" 
+                    asp-action="Create">Create a new mixin</a>
+            </li>
+        }
         </ul>
     </nav>
     

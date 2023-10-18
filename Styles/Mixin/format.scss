@@ -25,7 +25,7 @@ textarea{
   @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
 }
 
-input{
+input:not(#mixin-create){
   font-weight: bold;
   color: global.$primary-dark;
   border-bottom: 2px solid global.$primary-dark;

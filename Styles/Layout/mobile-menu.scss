@@ -20,6 +20,7 @@ $menu-open: 'input[type="checkbox"]:checked';
     align-items: flex-start;
     color: global.$secondary;
     font-size: global.$fs-500;
+    margin-right: 1em;
 
     transition: all .5s ease-out;
     @include utils.visibility("hidden");
