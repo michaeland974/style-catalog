@@ -45,7 +45,7 @@ public class MixinController : Controller
       }
       else{
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(MixinController.List), "List");
+        return RedirectToAction("List");
       }
     }
 
