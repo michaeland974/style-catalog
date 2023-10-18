@@ -13,6 +13,10 @@ $color-list:(
   'third': utils.add-opacity(global.$secondary, 0.4)
 );
 
+.overlay{
+  z-index: 3;
+}
+
 body{
   @include utils.background-gradient($color-list...);
 
@@ -22,7 +26,14 @@ body{
   font-family: 'Courier New', Courier, monospace;
   background-attachment: fixed;
   overflow-x: hidden;
-  
+
+  aspect-ratio: 600/900;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../../assets/wave-haikei-mobile.svg");
+
   nav{
     ul{
       display: flex;
@@ -56,8 +67,6 @@ body{
   color: global.$primary-dark;
   font-size: global.$fs-600;
   font-weight: bold;
-  // text-decoration: global.$primary-dark blink underline;
-  // -webkit-text-stroke-width: 0.5px;
   border-radius: global.$border-rounded;
   padding: 0.5em 1em 0.5em 1em;
 
@@ -81,12 +90,11 @@ body{
   font-family: Bungee;
   position: relative;
   padding: 1rem 1rem 1rem 1rem;
-  border-bottom: 8px solid global.$primary-dark;
-  border-right: 8px solid global.$primary-dark;
+  border-bottom: 8px dashed global.$primary-dark;
+  border-right: 8px dashed global.$primary-dark;
   border-bottom-right-radius: global.$border-rounded;
   width: 50%;
   display: inline-flex;
-  @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
   
   @media screen and (min-width: media.$tablet){
     width: 25%;
