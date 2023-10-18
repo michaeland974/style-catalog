@@ -18,6 +18,7 @@ $menu-open: 'input[type="checkbox"]:checked';
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    color: global.$secondary;
 
     transition: all .5s ease-out;
     @include utils.visibility("hidden");
@@ -35,7 +36,7 @@ $menu-open: 'input[type="checkbox"]:checked';
 
     .bar{
       display: block;
-      background-color: global.$primary-dark;
+      background-color: global.$secondary;
       width: 30px;
       height: 3px;
       border-radius: 5px;

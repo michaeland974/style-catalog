@@ -13,10 +13,6 @@ $color-list:(
   'third': utils.add-opacity(global.$secondary, 0.4)
 );
 
-.overlay{
-  z-index: 3;
-}
-
 body{
   @include utils.background-gradient($color-list...);
 
@@ -42,16 +38,8 @@ body{
   }
 
   main{
-    align-self: center;
+    align-self: flex-start;
   }
-}
-
-#page-desc{
-  color: global.$primary-dark;
-  font-size: global.$fs-600;
-  font-family: Bungee;
-  text-decoration: global.$primary-dark blink underline;
-  -webkit-text-stroke-width: 0.5px;
 }
 
 .call-to-actions{
@@ -61,16 +49,14 @@ body{
     gap: 0.5em;
   }
 
-  display: inline-flex;
   width: fit-content;
   font-family: 'Courier New', Courier, monospace;
   color: global.$primary-dark;
   font-size: global.$fs-600;
   font-weight: bold;
-  border-radius: global.$border-rounded;
   padding: 0.5em 1em 0.5em 1em;
 
-  background: linear-gradient(to left, transparent 50%, 
+  background: linear-gradient(to left, transparent 51%, 
                                      global.$primary-dark 50%) right;
   background-size: 200%;
   transition: all .3s ease-in;
@@ -90,15 +76,23 @@ body{
   font-family: Bungee;
   position: relative;
   padding: 1rem 1rem 1rem 1rem;
-  border-bottom: 8px dashed global.$primary-dark;
-  border-right: 8px dashed global.$primary-dark;
-  border-bottom-right-radius: global.$border-rounded;
+  border-bottom: 15px double global.$primary-dark;
+  border-right: 15px double global.$primary-dark;
   width: 50%;
   display: inline-flex;
   
   @media screen and (min-width: media.$tablet){
     width: 25%;
   }
+}
+
+#page-desc{
+  // width: 50%;
+  color: global.$primary-dark;
+  background-color: global.$secondary-faded;
+  font-size: global.$fs-600;
+  font-weight: bold;
+  font-style: italic;
 }
 
 
