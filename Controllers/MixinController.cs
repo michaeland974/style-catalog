@@ -60,8 +60,35 @@ public class MixinController : Controller
     }
 
     [HttpGet]
-    public IActionResult Select(string id){
-      return View(ViewBag.id);
+    public IActionResult Delete(){
+      return View();
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> Delete(string id){
+      var mixin = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
+
+      if(mixin is null){
+        return View();
+      }
+      else{
+        _context.Mixin.Remove(mixin);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(HomeController.Home), "Home");
+      }
+    }
+
+    [HttpGet]
+    public IActionResult Details(string id){
+      var mixin = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
+      
+      if(mixin is null){
+        return View();
+      }
+      else{
+        return View(mixin);
+      }
+
     }
 
     // [HttpPut]
@@ -74,8 +101,4 @@ public class MixinController : Controller
     //   return View();
     // }
 
-    // [HttpDelete]
-    // public async Task<IActionResult> Delete(){
-    //   return View();
-    // }
 }
