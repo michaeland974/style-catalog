@@ -1,0 +1,26 @@
+@model style_catalog.Models.Mixin;
+
+@{
+    ViewData["Title"] = "Details";    
+}
+@section css{
+  <link rel="stylesheet" href="~/css/Mixin/format.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Mixin/details.css" asp-append-version="true" />   
+}
+
+<div>
+  @if(Model is not null){
+      @await Html.PartialAsync(
+        "../Shared/_MixinPartial.cshtml",
+        Model,
+        new ViewDataDictionary(this.Vi‌​ewData) {
+        { "name", Model.name },
+        { "body", Model.body },
+        { "id", Model.Id },
+        { "arguments", Model.arguments is null ? "" : $"({Model.arguments})"},
+      })
+  }
+</div>
+
+
+

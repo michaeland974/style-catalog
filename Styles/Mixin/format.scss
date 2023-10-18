@@ -21,7 +21,7 @@ textarea{
   padding: 0.75em;
   background: none;
   border: none;
-  border-radius: global.$border-rounded;
+  // border-radius: global.$border-rounded;
   @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
 }
 
