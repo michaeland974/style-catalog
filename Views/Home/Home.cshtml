@@ -1,4 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using style_catalog.Models
+@inject SignInManager<Account> SignInManager
+@inject UserManager<Account> UserManager
+
+@{
     ViewData["Title"] = "Home";
 }
 

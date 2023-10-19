@@ -1,5 +1,6 @@
 @use '../base/global';
 @use '../base/utils';
+@use '../base/media';
 
 $menu-open: 'input[type="checkbox"]:checked';
 
@@ -24,6 +25,10 @@ $menu-open: 'input[type="checkbox"]:checked';
 
     transition: all .5s ease-out;
     @include utils.visibility("hidden");
+
+    @media screen and (max-width: media.$mobile){
+      margin-right: 0;
+    }
   }
 
   #{$menu-open} ~ nav .list{
@@ -69,5 +74,10 @@ $menu-open: 'input[type="checkbox"]:checked';
 
   #toggle{
     display: none;
+  }
+
+  #hello{
+    font-weight: bold;
+    text-decoration: underline;
   }
 }

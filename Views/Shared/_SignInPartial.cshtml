@@ -4,6 +4,9 @@
 @inject UserManager<Account> UserManager
 
 @if (SignInManager.IsSignedIn(User)){
+    <li id="hello">
+        Hello, @UserManager.GetUserName(User)
+    </li>
     <li>
         <a asp-controller="Home" 
            asp-action="Browse">Browse</a>
