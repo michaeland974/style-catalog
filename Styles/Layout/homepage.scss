@@ -66,7 +66,7 @@ body{
   color: global.$primary-dark;
   font-size: global.$fs-600;
   font-weight: bold;
-  padding: 0.5em 1em 0.5em 1em;
+  padding: 0.5em 2em 0.5em 1em;
   @include utils.background-transition(global.$primary-dark);
 }
 

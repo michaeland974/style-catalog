@@ -28,7 +28,10 @@
         @RenderBody()
     </main>
 
-    <nav>
+    <footer>
+        
+    </footer>
+    @* <nav>
         <ul class="bottom">
         @if (SignInManager.IsSignedIn(User)){
             <li>
@@ -44,7 +47,7 @@
             </li>
         }
         </ul>
-    </nav>
+    </nav> *@
     
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

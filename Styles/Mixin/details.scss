@@ -1,8 +1,13 @@
 @use '../base/utils';
+@use '../base/media';
 
 .container{
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: media.$mobile){
+    flex-direction: column;
+  }
 }
 
 .button-group{

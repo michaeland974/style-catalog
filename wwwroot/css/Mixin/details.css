@@ -1,1 +1,1 @@
-.container{display:flex;flex-direction:row}.button-group{display:flex;flex-direction:column;justify-content:flex-start}/*# sourceMappingURL=details.css.map */
+.container{display:flex;flex-direction:row}@media screen and (max-width: 400px){.container{flex-direction:column}}.button-group{display:flex;flex-direction:column;justify-content:flex-start}/*# sourceMappingURL=details.css.map */
