@@ -1,0 +1,37 @@
+@model style_catalog.Models.Mixin;
+
+<form asp-action="Edit" class="snippet">
+  <div class="validation-summary" 
+       asp-validation-summary="All" 
+      class="text-danger">
+  </div>
+
+  <div>
+    <span class="stamp" data="tag">
+      @@mixin
+    </span>
+    <span>
+      <input asp-for="name"
+             class="name"/>
+    </span> 
+    <span data="tag">{</span>
+  </div>
+
+  <div>
+    <span data="tag">(</span>
+      <input asp-for="arguments"
+             class="arguments"/>
+    <span data="tag">)</span>
+  </div>
+  
+  <div>
+    @Html.TextAreaFor(model => model.body, new {
+      rows=5,
+      @class = "formatted-body"}
+    )
+    <div data="tag">}</div>
+  </div> 
+
+  <input type="submit" value="&#8658; Edit" class="submit" id="mixin-edit" class="action-button"/>
+
+</form>

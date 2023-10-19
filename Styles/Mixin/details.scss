@@ -1,17 +1,12 @@
-// @use '../base/global';
-// @use '../base/utils';
+@use '../base/utils';
 
-// .details{
-//   @include utils.flex-column-center;
-// }
+.container{
+  display: flex;
+  flex-direction: row;
+}
 
-// .action-button{
-//   margin: 1em;
-//   padding: 0.5em 2em 0.5em 2em;  
-//   font-weight: bold;
-//   @include utils.background-transition(global.$primary-dark);
-// }
-
-// .action-button:hover{
-//   @include utils.background-transition-hover(global.$white);
-// }
+.button-group{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}

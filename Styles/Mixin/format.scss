@@ -67,7 +67,7 @@ input:not(.action-button){
 }
 
 .action-button{
-  margin: 1em;
+  // margin: 1em;
   padding: 0.5em 2em 0.5em 2em;  
   font-weight: bold;
   @include utils.background-transition(global.$primary-dark);

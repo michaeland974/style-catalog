@@ -1,0 +1,16 @@
+@model style_catalog.Models.Mixin;
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@section css{
+  <link rel="stylesheet" href="~/css/Mixin/format.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Mixin/edit.css" asp-append-version="true" />   
+}
+
+<div class="container">
+  <h1>Edit Mixin</h1>
+
+  <partial name="_MixinEditPartial"/>
+</div>
+

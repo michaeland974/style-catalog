@@ -1,0 +1,17 @@
+@use '../base/global';
+@use '../base/utils';
+
+h1{
+  font-weight: bold;
+}
+
+#mixin-edit{
+  margin-top: 1em;
+  padding: 0.25em 1em 0.25em 1em;
+  font-weight: bold;
+  @include utils.background-transition(global.$primary-dark);
+}
+
+#mixin-edit:hover{
+  @include utils.background-transition-hover(global.$white);
+}
