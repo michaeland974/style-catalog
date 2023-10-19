@@ -2,6 +2,12 @@
 @use '../base/utils';
 @use '../base/media';
 
+h1{
+  font-weight: bold;
+  justify-self: center;
+  text-decoration: underline;
+}
+
 #mixin-list{
   color: global.$primary-dark;
   display: grid;
@@ -13,4 +19,9 @@
   @media screen and (max-width: media.$tablet){
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+.view-only{
+  cursor: pointer;
+  pointer-events: none;
 }
