@@ -5,10 +5,16 @@
 }
 @section css{
   <link rel="stylesheet" href="~/css/Mixin/format.css" asp-append-version="true" />   
+  <link rel="stylesheet" href="~/css/Mixin/delete.css" asp-append-version="true" />   
 }
 
-<div class="container">
-  <h1>Delete from Catalog</h1>
-
-  @* <partial name="_MixinCreatePartial"/> *@
-</div>
+<form asp-action="Delete" id="delete-form">
+  <div>
+    <span class="tag" data="tag">@@mixin</span>
+    <span class="name" data="tag">@Model.name</span>
+  </div>
+  <input type="submit"  
+         id="mixin-delete" 
+         class="action-button"
+         value="&#8658; Delete"/>
+</form>

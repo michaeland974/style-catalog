@@ -5,10 +5,13 @@
   @include utils.flex-column-center;
   gap: 1.5em;
 }
-.formatted-body{
-  color: global.$dark-grey;
-}
 
+.formatted-body{
+  @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
+  font-family: 'Courier New', Courier, monospace;
+  padding: 0.75em 0.75em 0.75em 20px;
+  margin: 0.3em 0.3em 0.3em 0;
+}
 
 form{
   display: flex;
@@ -21,11 +24,21 @@ textarea{
   padding: 0.75em;
   background: none;
   border: none;
-  // border-radius: global.$border-rounded;
+  border-radius: global.$border-rounded;
   @include utils.box-shadow( 0px 3px 15px rgba(0,0,0,0.2));
 }
 
-input:not(#mixin-create){
+.snippet{
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in;
+}
+
+.snippet:not(form):hover{
+  transform: scale(1.05);
+}
+
+input:not(.action-button){
   font-weight: bold;
   color: global.$primary-dark;
   border-bottom: 2px solid global.$primary-dark;
@@ -53,3 +66,13 @@ input:not(#mixin-create){
   opacity: 1;
 }
 
+.action-button{
+  margin: 1em;
+  padding: 0.5em 2em 0.5em 2em;  
+  font-weight: bold;
+  @include utils.background-transition(global.$primary-dark);
+}
+
+.action-button:hover{
+  @include utils.background-transition-hover(global.$white);
+}

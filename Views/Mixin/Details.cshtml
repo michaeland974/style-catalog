@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="~/css/Mixin/details.css" asp-append-version="true" />   
 }
 
-<div>
+<div class="details">
   @if(Model is not null){
       @await Html.PartialAsync(
         "../Shared/_MixinPartial.cshtml",
@@ -19,7 +19,15 @@
         { "id", Model.Id },
         { "arguments", Model.arguments is null ? "" : $"({Model.arguments})"},
       })
+
+  <div class="button-group">
+    <a  class="action-button" 
+        asp-controller="Mixin" 
+        asp-action="Delete" 
+        asp-route-id=@Model.Id>&#8658; Delete</a>
+  </div>
   }
+
 </div>
 
 

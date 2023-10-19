@@ -1,6 +1,10 @@
 @model style_catalog.Models.Mixin;
 
-<div class="snippet">
+<a  class="snippet" 
+    asp-controller="Mixin" 
+    asp-action="Details" 
+    asp-route-id=@this.ViewData["id"]>
+    
   <div>
     <span class="stamp" data="tag">@@mixin</span>
     <span class="name" 
@@ -20,10 +24,4 @@
   <div data="tag">}</div>
   </div>
 
-  <div class="button-group">
-    <a asp-controller="Mixin" asp-action="Details" asp-route-id=@this.ViewData["id"]>
-      Select
-    </a>
-  </div>
-
-</div>
+</a>
