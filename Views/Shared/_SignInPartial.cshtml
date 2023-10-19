@@ -5,21 +5,37 @@
 
 @if (SignInManager.IsSignedIn(User)){
     <li>
+        <a asp-controller="Home" 
+           asp-action="Browse">Browse</a>
+    </li>
+    <li>
+        <a asp-controller="Mixin" 
+           asp-action="List">View Catalog</a>
+    </li>
+     <li>
+        <a asp-controller="Mixin" 
+           asp-action="Create">Add Mixin</a>
+    </li>
+    <li>
         <a id="logout" 
-        asp-controller="Account" 
-        asp-action="SignOut">Sign out</a>
+           asp-controller="Account" 
+           asp-action="SignOut">Sign out</a>
     </li>
 }
 else{
+     <li>
+        <a asp-controller="Home" 
+           asp-action="Browse">Browse</a>
+    </li>
     <li>
         <a id="register" 
-        asp-controller="Account" 
-        asp-action="Register">Register</a>
+           asp-controller="Account" 
+           asp-action="Register">Register</a>
     </li>
     <li>
         <a id="login" 
-        asp-controller="Account" 
-        asp-action="SignIn">Sign in</a>
+           asp-controller="Account" 
+           asp-action="SignIn">Sign in</a>
     </li>
 }
 
