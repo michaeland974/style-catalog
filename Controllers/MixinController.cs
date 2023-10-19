@@ -91,8 +91,31 @@ public class MixinController : Controller
       return View();
     }
 
-    // [HttpPut]
-    // public async Task<IActionResult> Edit(){
-    //   return View();
-    // }
+    [HttpGet]
+    public IActionResult Edit(string id){
+      var mixin = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
+
+      return mixin is not null ? View(mixin) : View();
+    }
+
+    [HttpPost]
+    [ActionName("Edit")]
+    public async Task<IActionResult> EditMixin(Mixin model, string id){
+      if(!ModelState.IsValid){
+        return View(model);
+      }
+
+      var current = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
+
+      if(current is not null){
+        current.name = model.name;
+        current.body = model.body;
+        current.arguments = model.arguments;
+        _context.Mixin.Update(current);
+        await _context.SaveChangesAsync();
+        
+        return RedirectToAction("List");
+      }
+      return View();
+    }
 }
