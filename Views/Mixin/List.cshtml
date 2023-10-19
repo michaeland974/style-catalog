@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="~/css/Mixin/list.css" asp-append-version="true" />   
 }
 
-<div id="mixin-list">
-  @if(Model.Count()==0){
-    <div>Mixin list is empty</div>
-  }
-  else{
-    foreach(var mixin in Model){
+@if(Model.Count()==0){
+  <h1 class="empty">Mixin list is empty</h1>
+}
+else{
+  <h1>Catalog</h1>
+  <div id="mixin-list">
+    @foreach(var mixin in Model){
       @await Html.PartialAsync(
         "../Shared/_MixinPartial.cshtml",
         mixin,
@@ -24,5 +25,5 @@
         { "arguments", mixin.arguments is null ? "" : $"({mixin.arguments})"},
       })
     }
-  }
 </div>
+}
