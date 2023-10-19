@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace style_catalog.Controllers;
 
-[Route("Mixin/[action]")]
+[Route("Mixin/[action]/{id?}")]
 public class MixinController : Controller
 {
     private readonly UserManager<Account> _userManager;
@@ -60,25 +60,6 @@ public class MixinController : Controller
     }
 
     [HttpGet]
-    public IActionResult Delete(){
-      return View();
-    }
-
-    [HttpDelete]
-    public async Task<IActionResult> Delete(string id){
-      var mixin = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
-
-      if(mixin is null){
-        return View();
-      }
-      else{
-        _context.Mixin.Remove(mixin);
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(HomeController.Home), "Home");
-      }
-    }
-
-    [HttpGet]
     public IActionResult Details(string id){
       var mixin = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
       
@@ -88,17 +69,30 @@ public class MixinController : Controller
       else{
         return View(mixin);
       }
-
     }
 
-    // [HttpPut]
-    // public async Task<IActionResult> AddTo(){
-    //   return View();
-    // }
+    [HttpGet]
+    public IActionResult Delete(string id){
+      var mixin = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
+
+      return mixin is not null ? View(mixin) : View();
+    }
+
+    [HttpPost]
+    [ActionName("Delete")]
+    public async Task<IActionResult> DeleteMixin(string id){
+      var mixin = _context.Mixin.FirstOrDefault(mixin => mixin.Id == id);
+
+      if(mixin is not null){
+        _context.Mixin.Remove(mixin);
+        await _context.SaveChangesAsync();
+        return RedirectToAction("List");
+      }
+      return View();
+    }
 
     // [HttpPut]
     // public async Task<IActionResult> Edit(){
     //   return View();
     // }
-
 }
